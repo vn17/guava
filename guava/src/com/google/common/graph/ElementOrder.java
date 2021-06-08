@@ -22,7 +22,7 @@ import static com.google.common.base.Preconditions.checkState;
 import com.google.common.annotations.Beta;
 import com.google.common.base.MoreObjects;
 import com.google.common.base.MoreObjects.ToStringHelper;
-import com.google.common.base.Objects;
+import com.google.common.base.Obj;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Ordering;
 import com.google.errorprone.annotations.Immutable;
@@ -170,12 +170,12 @@ public final class ElementOrder<T> {
     }
 
     ElementOrder<?> other = (ElementOrder<?>) obj;
-    return (type == other.type) && Objects.equal(comparator, other.comparator);
+    return (type == other.type) && Obj.equal(comparator, other.comparator);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hashCode(type, comparator);
+    return Obj.hashCode(type, comparator);
   }
 
   @Override

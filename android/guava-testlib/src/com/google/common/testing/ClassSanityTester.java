@@ -25,7 +25,7 @@ import com.google.common.annotations.Beta;
 import com.google.common.annotations.GwtIncompatible;
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Joiner;
-import com.google.common.base.Objects;
+import com.google.common.base.Obj;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ListMultimap;
@@ -158,7 +158,7 @@ public final class ClassSanityTester {
     checkNotNull(type);
     checkNotNull(value1);
     checkNotNull(value2);
-    checkArgument(!Objects.equal(value1, value2), "Duplicate value provided.");
+    checkArgument(!Obj.equal(value1, value2), "Duplicate value provided.");
     distinctValues.replaceValues(type, ImmutableList.of(value1, value2));
     setDefault(type, value1);
     return this;
@@ -596,7 +596,7 @@ public final class ClassSanityTester {
       List<Object> newArgs = Lists.newArrayList(args);
       Object newArg = argGenerators.get(i).generateFresh(params.get(i).getType());
 
-      if (newArg == null || Objects.equal(args.get(i), newArg)) {
+      if (newArg == null || Obj.equal(args.get(i), newArg)) {
         if (params.get(i).getType().getRawType().isEnum()) {
           continue; // Nothing better we can do if it's single-value enum
         }
@@ -625,7 +625,7 @@ public final class ClassSanityTester {
       // Two newFreshValueGenerator() instances should normally generate equal value sequence.
       Object shouldBeEqualArg = generateDummyArg(param, newFreshValueGenerator());
       if (arg != shouldBeEqualArg
-          && Objects.equal(arg, shouldBeEqualArg)
+          && Obj.equal(arg, shouldBeEqualArg)
           && hashCodeInsensitiveToArgReference(factory, args, i, shouldBeEqualArg)
           && hashCodeInsensitiveToArgReference(
               factory, args, i, generateDummyArg(param, newFreshValueGenerator()))) {

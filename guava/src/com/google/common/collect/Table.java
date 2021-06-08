@@ -17,7 +17,7 @@
 package com.google.common.collect;
 
 import com.google.common.annotations.GwtCompatible;
-import com.google.common.base.Objects;
+import com.google.common.base.Obj;
 import com.google.errorprone.annotations.CanIgnoreReturnValue;
 import com.google.errorprone.annotations.CompatibleWith;
 import com.google.errorprone.annotations.DoNotMock;
@@ -276,7 +276,7 @@ public interface Table<R, C, V> {
     /**
      * Returns the hash code of this cell.
      *
-     * <p>The hash code of a table cell is equal to {@link Objects#hashCode}{@code (e.getRowKey(),
+     * <p>The hash code of a table cell is equal to {@link Obj#hashCode}{@code (e.getRowKey(),
      * e.getColumnKey(), e.getValue())}.
      */
     @Override

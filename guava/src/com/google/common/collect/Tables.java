@@ -22,7 +22,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import com.google.common.annotations.Beta;
 import com.google.common.annotations.GwtCompatible;
 import com.google.common.base.Function;
-import com.google.common.base.Objects;
+import com.google.common.base.Obj;
 import com.google.common.base.Supplier;
 import com.google.common.collect.Table.Cell;
 import java.io.Serializable;
@@ -151,16 +151,16 @@ public final class Tables {
       }
       if (obj instanceof Cell) {
         Cell<?, ?, ?> other = (Cell<?, ?, ?>) obj;
-        return Objects.equal(getRowKey(), other.getRowKey())
-            && Objects.equal(getColumnKey(), other.getColumnKey())
-            && Objects.equal(getValue(), other.getValue());
+        return Obj.equal(getRowKey(), other.getRowKey())
+            && Obj.equal(getColumnKey(), other.getColumnKey())
+            && Obj.equal(getValue(), other.getValue());
       }
       return false;
     }
 
     @Override
     public int hashCode() {
-      return Objects.hashCode(getRowKey(), getColumnKey(), getValue());
+      return Obj.hashCode(getRowKey(), getColumnKey(), getValue());
     }
 
     @Override

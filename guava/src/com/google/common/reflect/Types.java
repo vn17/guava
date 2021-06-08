@@ -22,7 +22,7 @@ import static java.util.Objects.requireNonNull;
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Function;
 import com.google.common.base.Joiner;
-import com.google.common.base.Objects;
+import com.google.common.base.Obj;
 import com.google.common.base.Predicates;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
@@ -255,7 +255,7 @@ final class Types {
     public boolean equals(@CheckForNull Object obj) {
       if (obj instanceof GenericArrayType) {
         GenericArrayType that = (GenericArrayType) obj;
-        return Objects.equal(getGenericComponentType(), that.getGenericComponentType());
+        return Obj.equal(getGenericComponentType(), that.getGenericComponentType());
       }
       return false;
     }
@@ -322,7 +322,7 @@ final class Types {
       }
       ParameterizedType that = (ParameterizedType) other;
       return getRawType().equals(that.getRawType())
-          && Objects.equal(getOwnerType(), that.getOwnerType())
+          && Obj.equal(getOwnerType(), that.getOwnerType())
           && Arrays.equals(getActualTypeArguments(), that.getActualTypeArguments());
     }
 

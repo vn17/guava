@@ -28,7 +28,7 @@ import com.google.common.annotations.GwtIncompatible;
 import com.google.common.base.Converter;
 import com.google.common.base.Equivalence;
 import com.google.common.base.Function;
-import com.google.common.base.Objects;
+import com.google.common.base.Obj;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
@@ -606,7 +606,7 @@ public final class Maps {
 
     @Override
     public int hashCode() {
-      return Objects.hashCode(
+      return Obj.hashCode(
           entriesOnlyOnLeft(), entriesOnlyOnRight(), entriesInCommon(), entriesDiffering());
     }
 
@@ -657,15 +657,15 @@ public final class Maps {
     public boolean equals(@Nullable Object object) {
       if (object instanceof MapDifference.ValueDifference) {
         MapDifference.ValueDifference<?> that = (MapDifference.ValueDifference<?>) object;
-        return Objects.equal(this.left, that.leftValue())
-            && Objects.equal(this.right, that.rightValue());
+        return Obj.equal(this.left, that.leftValue())
+            && Obj.equal(this.right, that.rightValue());
       }
       return false;
     }
 
     @Override
     public int hashCode() {
-      return Objects.hashCode(left, right);
+      return Obj.hashCode(left, right);
     }
 
     @Override
@@ -1869,8 +1869,8 @@ public final class Maps {
      *
      * <ul>
      *   <li>Its execution does not cause any observable side effects.
-     *   <li>The computation is <i>consistent with equals</i>; that is, {@link Objects#equal
-     *       Objects.equal}{@code (k1, k2) &&} {@link Objects#equal}{@code (v1, v2)} implies that
+     *   <li>The computation is <i>consistent with equals</i>; that is, {@link Obj#equal
+     *       Objects.equal}{@code (k1, k2) &&} {@link Obj#equal}{@code (v1, v2)} implies that
      *       {@code Objects.equal(transformer.transform(k1, v1), transformer.transform(k2, v2))}.
      * </ul>
      *
@@ -2706,7 +2706,7 @@ public final class Maps {
       Iterator<Entry<K, V>> entryItr = unfiltered.entrySet().iterator();
       while (entryItr.hasNext()) {
         Entry<K, V> entry = entryItr.next();
-        if (predicate.apply(entry) && Objects.equal(entry.getValue(), o)) {
+        if (predicate.apply(entry) && Obj.equal(entry.getValue(), o)) {
           entryItr.remove();
           return true;
         }
@@ -3837,7 +3837,7 @@ public final class Maps {
         return super.remove(o);
       } catch (UnsupportedOperationException e) {
         for (Entry<K, V> entry : map().entrySet()) {
-          if (Objects.equal(o, entry.getValue())) {
+          if (Obj.equal(o, entry.getValue())) {
             map().remove(entry.getKey());
             return true;
           }
@@ -3916,7 +3916,7 @@ public final class Maps {
         Entry<?, ?> entry = (Entry<?, ?>) o;
         Object key = entry.getKey();
         V value = Maps.safeGet(map(), key);
-        return Objects.equal(value, entry.getValue()) && (value != null || map().containsKey(key));
+        return Obj.equal(value, entry.getValue()) && (value != null || map().containsKey(key));
       }
       return false;
     }

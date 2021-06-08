@@ -18,7 +18,7 @@ package com.google.common.collect;
 
 import com.google.common.annotations.Beta;
 import com.google.common.annotations.GwtCompatible;
-import com.google.common.base.Objects;
+import com.google.common.base.Obj;
 import com.google.errorprone.annotations.CanIgnoreReturnValue;
 import java.util.Collection;
 import java.util.Iterator;
@@ -41,7 +41,7 @@ import org.checkerframework.checker.nullness.qual.Nullable;
  * default} methods. Instead, it inherits their default implementations. When those implementations
  * invoke methods, they invoke methods on the {@code ForwardingMap}.
  *
- * <p>Each of the {@code standard} methods, where appropriate, use {@link Objects#equal} to test
+ * <p>Each of the {@code standard} methods, where appropriate, use {@link Obj#equal} to test
  * equality for both keys and values. This may not be the desired behavior for map implementations
  * that use non-standard notions of key equality, such as a {@code SortedMap} whose comparator is
  * not consistent with {@code equals}.
@@ -162,7 +162,7 @@ public abstract class ForwardingMap<K, V> extends ForwardingObject implements Ma
     Iterator<Entry<K, V>> entryIterator = entrySet().iterator();
     while (entryIterator.hasNext()) {
       Entry<K, V> entry = entryIterator.next();
-      if (Objects.equal(entry.getKey(), key)) {
+      if (Obj.equal(entry.getKey(), key)) {
         V value = entry.getValue();
         entryIterator.remove();
         return value;

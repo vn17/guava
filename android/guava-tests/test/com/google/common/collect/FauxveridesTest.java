@@ -24,7 +24,7 @@ import static java.lang.reflect.Modifier.isStatic;
 
 import com.google.common.base.Function;
 import com.google.common.base.Joiner;
-import com.google.common.base.Objects;
+import com.google.common.base.Obj;
 import java.lang.reflect.Method;
 import java.lang.reflect.Type;
 import java.lang.reflect.TypeVariable;
@@ -189,7 +189,7 @@ public class FauxveridesTest extends TestCase {
 
     @Override
     public int hashCode() {
-      return Objects.hashCode(name, parameterTypes, typeSignature);
+      return Obj.hashCode(name, parameterTypes, typeSignature);
     }
 
     @Override

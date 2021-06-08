@@ -24,7 +24,7 @@ import static java.lang.Double.isNaN;
 import com.google.common.annotations.Beta;
 import com.google.common.annotations.GwtIncompatible;
 import com.google.common.base.MoreObjects;
-import com.google.common.base.Objects;
+import com.google.common.base.Obj;
 import java.io.Serializable;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -235,7 +235,7 @@ public final class PairedStats implements Serializable {
    */
   @Override
   public int hashCode() {
-    return Objects.hashCode(xStats, yStats, sumOfProductsOfDeltas);
+    return Obj.hashCode(xStats, yStats, sumOfProductsOfDeltas);
   }
 
   @Override

@@ -16,7 +16,7 @@
 
 package com.google.common.collect;
 
-import static com.google.common.base.Objects.equal;
+import static com.google.common.base.Obj.equal;
 import static com.google.common.collect.Platform.reduceExponentIfGwt;
 import static com.google.common.collect.Platform.reduceIterationsIfGwt;
 import static com.google.common.truth.Truth.assertThat;

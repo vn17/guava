@@ -18,7 +18,7 @@ package com.google.common.collect;
 
 import com.google.common.annotations.Beta;
 import com.google.common.annotations.GwtCompatible;
-import com.google.common.base.Objects;
+import com.google.common.base.Obj;
 import com.google.errorprone.annotations.CanIgnoreReturnValue;
 import java.util.Collection;
 import java.util.Iterator;
@@ -141,7 +141,7 @@ public abstract class ForwardingMultiset<E extends @Nullable Object> extends For
   @Beta
   protected int standardCount(@CheckForNull Object object) {
     for (Entry<?> entry : this.entrySet()) {
-      if (Objects.equal(entry.getElement(), object)) {
+      if (Obj.equal(entry.getElement(), object)) {
         return entry.getCount();
       }
     }

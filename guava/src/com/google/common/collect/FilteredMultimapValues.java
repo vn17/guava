@@ -17,7 +17,7 @@ package com.google.common.collect;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 import com.google.common.annotations.GwtCompatible;
-import com.google.common.base.Objects;
+import com.google.common.base.Obj;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.j2objc.annotations.Weak;
@@ -61,7 +61,7 @@ final class FilteredMultimapValues<K, V> extends AbstractCollection<V> {
     for (Iterator<Entry<K, V>> unfilteredItr = multimap.unfiltered().entries().iterator();
         unfilteredItr.hasNext(); ) {
       Entry<K, V> entry = unfilteredItr.next();
-      if (entryPredicate.apply(entry) && Objects.equal(entry.getValue(), o)) {
+      if (entryPredicate.apply(entry) && Obj.equal(entry.getValue(), o)) {
         unfilteredItr.remove();
         return true;
       }

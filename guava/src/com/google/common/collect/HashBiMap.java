@@ -22,7 +22,7 @@ import static com.google.common.collect.Hashing.smearedHash;
 
 import com.google.common.annotations.GwtCompatible;
 import com.google.common.annotations.GwtIncompatible;
-import com.google.common.base.Objects;
+import com.google.common.base.Obj;
 import com.google.common.collect.Maps.IteratorBasedAbstractMap;
 import com.google.errorprone.annotations.CanIgnoreReturnValue;
 import com.google.errorprone.annotations.concurrent.LazyInit;
@@ -227,7 +227,7 @@ public final class HashBiMap<K, V> extends IteratorBasedAbstractMap<K, V>
     for (BiEntry<K, V> entry = hashTableKToV[keyHash & mask];
         entry != null;
         entry = entry.nextInKToVBucket) {
-      if (keyHash == entry.keyHash && Objects.equal(key, entry.key)) {
+      if (keyHash == entry.keyHash && Obj.equal(key, entry.key)) {
         return entry;
       }
     }
@@ -238,7 +238,7 @@ public final class HashBiMap<K, V> extends IteratorBasedAbstractMap<K, V>
     for (BiEntry<K, V> entry = hashTableVToK[valueHash & mask];
         entry != null;
         entry = entry.nextInVToKBucket) {
-      if (valueHash == entry.valueHash && Objects.equal(value, entry.value)) {
+      if (valueHash == entry.valueHash && Obj.equal(value, entry.value)) {
         return entry;
       }
     }
@@ -283,7 +283,7 @@ public final class HashBiMap<K, V> extends IteratorBasedAbstractMap<K, V>
     BiEntry<K, V> oldEntryForKey = seekByKey(key, keyHash);
     if (oldEntryForKey != null
         && valueHash == oldEntryForKey.valueHash
-        && Objects.equal(value, oldEntryForKey.value)) {
+        && Obj.equal(value, oldEntryForKey.value)) {
       return value;
     }
 
@@ -324,7 +324,7 @@ public final class HashBiMap<K, V> extends IteratorBasedAbstractMap<K, V>
     BiEntry<K, V> oldEntryForKey = seekByKey(key, keyHash);
     if (oldEntryForValue != null
         && keyHash == oldEntryForValue.keyHash
-        && Objects.equal(key, oldEntryForValue.key)) {
+        && Obj.equal(key, oldEntryForValue.key)) {
       return key;
     } else if (oldEntryForKey != null && !force) {
       throw new IllegalArgumentException("key already present: " + key);
@@ -522,7 +522,7 @@ public final class HashBiMap<K, V> extends IteratorBasedAbstractMap<K, V>
         public V setValue(V value) {
           V oldValue = delegate.value;
           int valueHash = smearedHash(value);
-          if (valueHash == delegate.valueHash && Objects.equal(value, oldValue)) {
+          if (valueHash == delegate.valueHash && Obj.equal(value, oldValue)) {
             return value;
           }
           checkArgument(seekByValue(value, valueHash) == null, "value already present: %s", value);
@@ -691,7 +691,7 @@ public final class HashBiMap<K, V> extends IteratorBasedAbstractMap<K, V>
           public K setValue(K key) {
             K oldKey = delegate.key;
             int keyHash = smearedHash(key);
-            if (keyHash == delegate.keyHash && Objects.equal(key, oldKey)) {
+            if (keyHash == delegate.keyHash && Obj.equal(key, oldKey)) {
               return key;
             }
             checkArgument(seekByKey(key, keyHash) == null, "value already present: %s", key);

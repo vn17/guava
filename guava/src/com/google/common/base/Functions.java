@@ -187,14 +187,14 @@ public final class Functions {
     public boolean equals(@Nullable Object o) {
       if (o instanceof ForMapWithDefault) {
         ForMapWithDefault<?, ?> that = (ForMapWithDefault<?, ?>) o;
-        return map.equals(that.map) && Objects.equal(defaultValue, that.defaultValue);
+        return map.equals(that.map) && Obj.equal(defaultValue, that.defaultValue);
       }
       return false;
     }
 
     @Override
     public int hashCode() {
-      return Objects.hashCode(map, defaultValue);
+      return Obj.hashCode(map, defaultValue);
     }
 
     @Override
@@ -334,7 +334,7 @@ public final class Functions {
     public boolean equals(@Nullable Object obj) {
       if (obj instanceof ConstantFunction) {
         ConstantFunction<?> that = (ConstantFunction<?>) obj;
-        return Objects.equal(value, that.value);
+        return Obj.equal(value, that.value);
       }
       return false;
     }

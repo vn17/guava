@@ -23,7 +23,7 @@ import static com.google.common.collect.Hashing.smearedHash;
 
 import com.google.common.annotations.GwtIncompatible;
 import com.google.common.annotations.VisibleForTesting;
-import com.google.common.base.Objects;
+import com.google.common.base.Obj;
 import com.google.common.base.Preconditions;
 import com.google.common.primitives.Ints;
 import com.google.errorprone.annotations.CanIgnoreReturnValue;
@@ -320,7 +320,7 @@ class CompactHashSet<E> extends AbstractSet<E> implements Serializable {
         entryIndex = next - 1;
         entry = entries[entryIndex];
         if (CompactHashing.getHashPrefix(entry, mask) == hashPrefix
-            && Objects.equal(object, elements[entryIndex])) {
+            && Obj.equal(object, elements[entryIndex])) {
           return false;
         }
         next = CompactHashing.getNext(entry, mask);
@@ -432,7 +432,7 @@ class CompactHashSet<E> extends AbstractSet<E> implements Serializable {
       int entryIndex = next - 1;
       int entry = entries[entryIndex];
       if (CompactHashing.getHashPrefix(entry, mask) == hashPrefix
-          && Objects.equal(object, elements[entryIndex])) {
+          && Obj.equal(object, elements[entryIndex])) {
         return true;
       }
       next = CompactHashing.getNext(entry, mask);

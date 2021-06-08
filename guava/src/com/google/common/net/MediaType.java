@@ -29,7 +29,7 @@ import com.google.common.base.Function;
 import com.google.common.base.Joiner;
 import com.google.common.base.Joiner.MapJoiner;
 import com.google.common.base.MoreObjects;
-import com.google.common.base.Objects;
+import com.google.common.base.Obj;
 import com.google.common.base.Optional;
 import com.google.common.collect.ImmutableListMultimap;
 import com.google.common.collect.ImmutableMultiset;
@@ -1155,7 +1155,7 @@ public final class MediaType {
     // racy single-check idiom
     int h = hashCode;
     if (h == 0) {
-      h = Objects.hashCode(type, subtype, parametersAsMap());
+      h = Obj.hashCode(type, subtype, parametersAsMap());
       hashCode = h;
     }
     return h;

@@ -17,7 +17,7 @@
 package com.google.common.collect;
 
 import com.google.common.annotations.GwtCompatible;
-import com.google.common.base.Objects;
+import com.google.common.base.Obj;
 import com.google.errorprone.annotations.CanIgnoreReturnValue;
 import java.util.Collection;
 import java.util.Iterator;
@@ -168,7 +168,7 @@ public abstract class ForwardingCollection<E> extends ForwardingObject implement
   protected boolean standardRemove(@Nullable Object object) {
     Iterator<E> iterator = iterator();
     while (iterator.hasNext()) {
-      if (Objects.equal(iterator.next(), object)) {
+      if (Obj.equal(iterator.next(), object)) {
         iterator.remove();
         return true;
       }

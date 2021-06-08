@@ -21,7 +21,7 @@ import static com.google.common.collect.BoundType.OPEN;
 import static com.google.common.collect.NullnessCasts.uncheckedCastNullableTToT;
 
 import com.google.common.annotations.GwtCompatible;
-import com.google.common.base.Objects;
+import com.google.common.base.Obj;
 import java.io.Serializable;
 import java.util.Comparator;
 import javax.annotation.CheckForNull;
@@ -245,15 +245,15 @@ final class GeneralRange<T extends @Nullable Object> implements Serializable {
           && hasUpperBound == r.hasUpperBound
           && getLowerBoundType().equals(r.getLowerBoundType())
           && getUpperBoundType().equals(r.getUpperBoundType())
-          && Objects.equal(getLowerEndpoint(), r.getLowerEndpoint())
-          && Objects.equal(getUpperEndpoint(), r.getUpperEndpoint());
+          && Obj.equal(getLowerEndpoint(), r.getLowerEndpoint())
+          && Obj.equal(getUpperEndpoint(), r.getUpperEndpoint());
     }
     return false;
   }
 
   @Override
   public int hashCode() {
-    return Objects.hashCode(
+    return Obj.hashCode(
         comparator,
         getLowerEndpoint(),
         getLowerBoundType(),
