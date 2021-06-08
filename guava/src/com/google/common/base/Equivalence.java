@@ -298,14 +298,14 @@ public abstract class Equivalence<T> implements BiPredicate<@Nullable T, @Nullab
       }
       if (obj instanceof EquivalentToPredicate) {
         EquivalentToPredicate<?> that = (EquivalentToPredicate<?>) obj;
-        return equivalence.equals(that.equivalence) && Objects.equal(target, that.target);
+        return equivalence.equals(that.equivalence) && Obj.equal(target, that.target);
       }
       return false;
     }
 
     @Override
     public int hashCode() {
-      return Objects.hashCode(equivalence, target);
+      return Obj.hashCode(equivalence, target);
     }
 
     @Override

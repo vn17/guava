@@ -23,7 +23,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import com.google.common.annotations.Beta;
 import com.google.common.annotations.GwtCompatible;
 import com.google.common.annotations.GwtIncompatible;
-import com.google.common.base.Objects;
+import com.google.common.base.Obj;
 import com.google.common.collect.Maps.IteratorBasedAbstractMap;
 import com.google.errorprone.annotations.CanIgnoreReturnValue;
 import com.google.errorprone.annotations.DoNotCall;
@@ -415,7 +415,7 @@ public final class ArrayTable<R, C, V> extends AbstractTable<R, C, V> implements
   public boolean containsValue(@Nullable Object value) {
     for (V[] row : array) {
       for (V element : row) {
-        if (Objects.equal(value, element)) {
+        if (Obj.equal(value, element)) {
           return true;
         }
       }

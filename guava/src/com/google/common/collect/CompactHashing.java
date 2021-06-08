@@ -17,7 +17,7 @@
 package com.google.common.collect;
 
 import com.google.common.annotations.GwtIncompatible;
-import com.google.common.base.Objects;
+import com.google.common.base.Obj;
 import com.google.common.primitives.Ints;
 import java.util.Arrays;
 import org.checkerframework.checker.nullness.qual.Nullable;
@@ -162,8 +162,8 @@ final class CompactHashing {
       int entryIndex = next - 1;
       int entry = entries[entryIndex];
       if (getHashPrefix(entry, mask) == hashPrefix
-          && Objects.equal(key, keys[entryIndex])
-          && (values == null || Objects.equal(value, values[entryIndex]))) {
+          && Obj.equal(key, keys[entryIndex])
+          && (values == null || Obj.equal(value, values[entryIndex]))) {
         int newNext = getNext(entry, mask);
         if (lastEntryIndex == -1) {
           // we need to update the root link from table[]

@@ -20,7 +20,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 import com.google.common.annotations.GwtCompatible;
 import com.google.common.base.Function;
-import com.google.common.base.Objects;
+import com.google.common.base.Obj;
 import java.io.Serializable;
 import org.checkerframework.checker.nullness.qual.Nullable;
 
@@ -57,7 +57,7 @@ final class ByFunctionOrdering<F, T> extends Ordering<F> implements Serializable
 
   @Override
   public int hashCode() {
-    return Objects.hashCode(function, ordering);
+    return Obj.hashCode(function, ordering);
   }
 
   @Override

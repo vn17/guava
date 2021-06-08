@@ -27,7 +27,7 @@ import static java.math.RoundingMode.UNNECESSARY;
 import com.google.common.annotations.GwtCompatible;
 import com.google.common.annotations.GwtIncompatible;
 import com.google.common.base.Ascii;
-import com.google.common.base.Objects;
+import com.google.common.base.Obj;
 import com.google.errorprone.annotations.concurrent.LazyInit;
 import java.io.IOException;
 import java.io.InputStream;
@@ -876,14 +876,14 @@ public abstract class BaseEncoding {
       if (other instanceof StandardBaseEncoding) {
         StandardBaseEncoding that = (StandardBaseEncoding) other;
         return this.alphabet.equals(that.alphabet)
-            && Objects.equal(this.paddingChar, that.paddingChar);
+            && Obj.equal(this.paddingChar, that.paddingChar);
       }
       return false;
     }
 
     @Override
     public int hashCode() {
-      return alphabet.hashCode() ^ Objects.hashCode(paddingChar);
+      return alphabet.hashCode() ^ Obj.hashCode(paddingChar);
     }
   }
 

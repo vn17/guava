@@ -67,7 +67,7 @@ final class FunctionalEquivalence<F, T> extends Equivalence<F> implements Serial
 
   @Override
   public int hashCode() {
-    return Objects.hashCode(function, resultEquivalence);
+    return Obj.hashCode(function, resultEquivalence);
   }
 
   @Override

@@ -22,7 +22,7 @@ import static java.util.Objects.requireNonNull;
 
 import com.google.common.annotations.Beta;
 import com.google.common.base.Function;
-import com.google.common.base.Objects;
+import com.google.common.base.Obj;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
@@ -132,7 +132,7 @@ public final class Graphs {
    */
   private static boolean canTraverseWithoutReusingEdge(
       Graph<?> graph, Object nextNode, @CheckForNull Object previousNode) {
-    if (graph.isDirected() || !Objects.equal(previousNode, nextNode)) {
+    if (graph.isDirected() || !Obj.equal(previousNode, nextNode)) {
       return true;
     }
     // This falls into the undirected A->B->A case. The Graph interface does not support parallel

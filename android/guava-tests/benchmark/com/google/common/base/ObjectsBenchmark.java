@@ -19,7 +19,7 @@ package com.google.common.base;
 import com.google.caliper.Benchmark;
 
 /**
- * Some microbenchmarks for the {@link com.google.common.base.Objects} class.
+ * Some microbenchmarks for the {@link Obj} class.
  *
  * @author Ben L. Titzer
  */
@@ -40,7 +40,7 @@ public class ObjectsBenchmark {
   int hashString_2(int reps) {
     int dummy = 0;
     for (int i = 0; i < reps; i++) {
-      dummy += Objects.hashCode(S0, S1);
+      dummy += Obj.hashCode(S0, S1);
     }
     return dummy;
   }
@@ -49,7 +49,7 @@ public class ObjectsBenchmark {
   int hashString_3(int reps) {
     int dummy = 0;
     for (int i = 0; i < reps; i++) {
-      dummy += Objects.hashCode(S0, S1, S2);
+      dummy += Obj.hashCode(S0, S1, S2);
     }
     return dummy;
   }
@@ -58,7 +58,7 @@ public class ObjectsBenchmark {
   int hashString_4(int reps) {
     int dummy = 0;
     for (int i = 0; i < reps; i++) {
-      dummy += Objects.hashCode(S0, S1, S2, S3);
+      dummy += Obj.hashCode(S0, S1, S2, S3);
     }
     return dummy;
   }
@@ -67,7 +67,7 @@ public class ObjectsBenchmark {
   int hashString_5(int reps) {
     int dummy = 0;
     for (int i = 0; i < reps; i++) {
-      dummy += Objects.hashCode(S0, S1, S2, S3, S4);
+      dummy += Obj.hashCode(S0, S1, S2, S3, S4);
     }
     return dummy;
   }
@@ -76,8 +76,8 @@ public class ObjectsBenchmark {
   int hashMixed_5(int reps) {
     int dummy = 0;
     for (int i = 0; i < reps; i++) {
-      dummy += Objects.hashCode(I2, S1, D1, S2, I0);
-      dummy += Objects.hashCode(D0, I1, S3, I2, S0);
+      dummy += Obj.hashCode(I2, S1, D1, S2, I0);
+      dummy += Obj.hashCode(D0, I1, S3, I2, S0);
     }
     return dummy;
   }

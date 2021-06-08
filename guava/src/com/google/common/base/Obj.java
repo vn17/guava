@@ -31,8 +31,8 @@ import org.checkerframework.checker.nullness.qual.Nullable;
  */
 @GwtCompatible
 @ElementTypesAreNonnullByDefault
-public final class Objects extends ExtraObjectsMethodsForWeb {
-  private Objects() {}
+public final class Obj extends ExtraObjectsMethodsForWeb {
+  private Obj() {}
 
   /**
    * Determines whether two possibly-null objects are equal. Returns:

@@ -638,7 +638,7 @@ public final class Predicates {
       // Pattern uses Object.hashCode, so we have to reach
       // inside to build a hashCode consistent with equals.
 
-      return Objects.hashCode(pattern.pattern(), pattern.flags());
+      return Obj.hashCode(pattern.pattern(), pattern.flags());
     }
 
     @Override
@@ -648,7 +648,7 @@ public final class Predicates {
 
         // Pattern uses Object (identity) equality, so we have to reach
         // inside to compare individual fields.
-        return Objects.equal(pattern.pattern(), that.pattern.pattern())
+        return Obj.equal(pattern.pattern(), that.pattern.pattern())
             && pattern.flags() == that.pattern.flags();
       }
       return false;

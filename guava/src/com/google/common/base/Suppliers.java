@@ -71,7 +71,7 @@ public final class Suppliers {
 
     @Override
     public int hashCode() {
-      return Objects.hashCode(function, supplier);
+      return Obj.hashCode(function, supplier);
     }
 
     @Override
@@ -284,14 +284,14 @@ public final class Suppliers {
     public boolean equals(@Nullable Object obj) {
       if (obj instanceof SupplierOfInstance) {
         SupplierOfInstance<?> that = (SupplierOfInstance<?>) obj;
-        return Objects.equal(instance, that.instance);
+        return Obj.equal(instance, that.instance);
       }
       return false;
     }
 
     @Override
     public int hashCode() {
-      return Objects.hashCode(instance);
+      return Obj.hashCode(instance);
     }
 
     @Override

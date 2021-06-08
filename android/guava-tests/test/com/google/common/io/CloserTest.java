@@ -19,7 +19,7 @@ package com.google.common.io;
 import static com.google.common.truth.Truth.assertThat;
 
 import com.google.common.base.MoreObjects;
-import com.google.common.base.Objects;
+import com.google.common.base.Obj;
 import com.google.common.base.Throwables;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
@@ -405,7 +405,7 @@ public class CloserTest extends TestCase {
 
     @Override
     public int hashCode() {
-      return Objects.hashCode(closeable, thrown, suppressed);
+      return Obj.hashCode(closeable, thrown, suppressed);
     }
 
     @Override

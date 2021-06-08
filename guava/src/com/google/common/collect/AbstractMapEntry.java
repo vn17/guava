@@ -17,7 +17,7 @@
 package com.google.common.collect;
 
 import com.google.common.annotations.GwtCompatible;
-import com.google.common.base.Objects;
+import com.google.common.base.Obj;
 import java.util.Map.Entry;
 import org.checkerframework.checker.nullness.qual.Nullable;
 
@@ -45,8 +45,8 @@ abstract class AbstractMapEntry<K, V> implements Entry<K, V> {
   public boolean equals(@Nullable Object object) {
     if (object instanceof Entry) {
       Entry<?, ?> that = (Entry<?, ?>) object;
-      return Objects.equal(this.getKey(), that.getKey())
-          && Objects.equal(this.getValue(), that.getValue());
+      return Obj.equal(this.getKey(), that.getKey())
+          && Obj.equal(this.getValue(), that.getValue());
     }
     return false;
   }

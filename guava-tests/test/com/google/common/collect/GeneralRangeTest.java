@@ -19,7 +19,7 @@ import static com.google.common.collect.BoundType.OPEN;
 
 import com.google.common.annotations.GwtCompatible;
 import com.google.common.annotations.GwtIncompatible;
-import com.google.common.base.Objects;
+import com.google.common.base.Obj;
 import com.google.common.testing.NullPointerTester;
 import java.util.Arrays;
 import java.util.List;
@@ -80,7 +80,7 @@ public class GeneralRangeTest extends TestCase {
     for (Integer i : IN_ORDER_VALUES) {
       GeneralRange<Integer> range = GeneralRange.range(ORDERING, i, CLOSED, i, CLOSED);
       for (Integer j : IN_ORDER_VALUES) {
-        assertEquals(Objects.equal(i, j), range.contains(j));
+        assertEquals(Obj.equal(i, j), range.contains(j));
       }
     }
   }

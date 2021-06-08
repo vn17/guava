@@ -23,7 +23,7 @@ import static com.google.common.collect.Hashing.smearedHash;
 
 import com.google.common.annotations.GwtIncompatible;
 import com.google.common.annotations.VisibleForTesting;
-import com.google.common.base.Objects;
+import com.google.common.base.Obj;
 import com.google.common.base.Preconditions;
 import com.google.common.primitives.Ints;
 import com.google.errorprone.annotations.CanIgnoreReturnValue;
@@ -315,7 +315,7 @@ class CompactHashMap<K, V> extends AbstractMap<K, V> implements Serializable {
         entryIndex = next - 1;
         entry = entries[entryIndex];
         if (CompactHashing.getHashPrefix(entry, mask) == hashPrefix
-            && Objects.equal(key, keys[entryIndex])) {
+            && Obj.equal(key, keys[entryIndex])) {
           @SuppressWarnings("unchecked") // known to be a V
           @Nullable
           V oldValue = (V) values[entryIndex];
@@ -430,7 +430,7 @@ class CompactHashMap<K, V> extends AbstractMap<K, V> implements Serializable {
       int entryIndex = next - 1;
       int entry = entries[entryIndex];
       if (CompactHashing.getHashPrefix(entry, mask) == hashPrefix
-          && Objects.equal(key, keys[entryIndex])) {
+          && Obj.equal(key, keys[entryIndex])) {
         return entryIndex;
       }
       next = CompactHashing.getNext(entry, mask);
@@ -760,7 +760,7 @@ class CompactHashMap<K, V> extends AbstractMap<K, V> implements Serializable {
       } else if (o instanceof Entry) {
         Entry<?, ?> entry = (Entry<?, ?>) o;
         int index = indexOf(entry.getKey());
-        return index != -1 && Objects.equal(values[index], entry.getValue());
+        return index != -1 && Obj.equal(values[index], entry.getValue());
       }
       return false;
     }
@@ -826,7 +826,7 @@ class CompactHashMap<K, V> extends AbstractMap<K, V> implements Serializable {
     private void updateLastKnownIndex() {
       if (lastKnownIndex == -1
           || lastKnownIndex >= size()
-          || !Objects.equal(key, keys[lastKnownIndex])) {
+          || !Obj.equal(key, keys[lastKnownIndex])) {
         lastKnownIndex = indexOf(key);
       }
     }
@@ -879,7 +879,7 @@ class CompactHashMap<K, V> extends AbstractMap<K, V> implements Serializable {
       return delegate.containsValue(value);
     }
     for (int i = 0; i < size; i++) {
-      if (Objects.equal(value, values[i])) {
+      if (Obj.equal(value, values[i])) {
         return true;
       }
     }

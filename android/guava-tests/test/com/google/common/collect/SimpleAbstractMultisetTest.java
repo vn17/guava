@@ -18,7 +18,7 @@ import static com.google.common.base.Preconditions.checkArgument;
 
 import com.google.common.annotations.GwtCompatible;
 import com.google.common.annotations.GwtIncompatible;
-import com.google.common.base.Objects;
+import com.google.common.base.Obj;
 import com.google.common.collect.testing.features.CollectionFeature;
 import com.google.common.collect.testing.features.CollectionSize;
 import com.google.common.collect.testing.google.MultisetTestSuiteBuilder;
@@ -108,7 +108,7 @@ public class SimpleAbstractMultisetTest extends TestCase {
     @Override
     public int count(@NullableDecl Object element) {
       for (Entry<E> entry : entrySet()) {
-        if (Objects.equal(entry.getElement(), element)) {
+        if (Obj.equal(entry.getElement(), element)) {
           return entry.getCount();
         }
       }

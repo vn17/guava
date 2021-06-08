@@ -24,7 +24,7 @@ import static java.util.Objects.requireNonNull;
 
 import com.google.common.annotations.Beta;
 import com.google.common.annotations.GwtCompatible;
-import com.google.common.base.Objects;
+import com.google.common.base.Obj;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Multiset.Entry;
@@ -841,7 +841,7 @@ public final class Multisets {
       if (object instanceof Multiset.Entry) {
         Multiset.Entry<?> that = (Multiset.Entry<?>) object;
         return this.getCount() == that.getCount()
-            && Objects.equal(this.getElement(), that.getElement());
+            && Obj.equal(this.getElement(), that.getElement());
       }
       return false;
     }

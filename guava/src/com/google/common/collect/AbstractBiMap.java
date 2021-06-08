@@ -22,7 +22,7 @@ import static com.google.common.collect.CollectPreconditions.checkRemove;
 
 import com.google.common.annotations.GwtCompatible;
 import com.google.common.annotations.GwtIncompatible;
-import com.google.common.base.Objects;
+import com.google.common.base.Obj;
 import com.google.errorprone.annotations.CanIgnoreReturnValue;
 import com.google.j2objc.annotations.RetainedWith;
 import com.google.j2objc.annotations.WeakOuter;
@@ -128,7 +128,7 @@ abstract class AbstractBiMap<K, V> extends ForwardingMap<K, V>
     checkKey(key);
     checkValue(value);
     boolean containedKey = containsKey(key);
-    if (containedKey && Objects.equal(value, get(key))) {
+    if (containedKey && Obj.equal(value, get(key))) {
       return value;
     }
     if (force) {
@@ -323,12 +323,12 @@ abstract class AbstractBiMap<K, V> extends ForwardingMap<K, V>
       // Preconditions keep the map and inverse consistent.
       checkState(entrySet().contains(this), "entry no longer in map");
       // similar to putInBothMaps, but set via entry
-      if (Objects.equal(value, getValue())) {
+      if (Obj.equal(value, getValue())) {
         return value;
       }
       checkArgument(!containsValue(value), "value already present: %s", value);
       V oldValue = delegate.setValue(value);
-      checkState(Objects.equal(value, get(getKey())), "entry no longer in map");
+      checkState(Obj.equal(value, get(getKey())), "entry no longer in map");
       updateInverseMap(getKey(), true, oldValue, value);
       return oldValue;
     }

@@ -30,7 +30,7 @@ import com.google.common.annotations.GwtCompatible;
 import com.google.common.annotations.GwtIncompatible;
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Function;
-import com.google.common.base.Objects;
+import com.google.common.base.Obj;
 import com.google.common.math.IntMath;
 import com.google.common.primitives.Ints;
 import java.io.Serializable;
@@ -977,7 +977,7 @@ public final class Lists {
     if (thisList instanceof RandomAccess && otherList instanceof RandomAccess) {
       // avoid allocation and use the faster loop
       for (int i = 0; i < size; i++) {
-        if (!Objects.equal(thisList.get(i), otherList.get(i))) {
+        if (!Obj.equal(thisList.get(i), otherList.get(i))) {
           return false;
         }
       }
@@ -1005,7 +1005,7 @@ public final class Lists {
     } else {
       ListIterator<?> listIterator = list.listIterator();
       while (listIterator.hasNext()) {
-        if (Objects.equal(element, listIterator.next())) {
+        if (Obj.equal(element, listIterator.next())) {
           return listIterator.previousIndex();
         }
       }
@@ -1038,7 +1038,7 @@ public final class Lists {
     } else {
       ListIterator<?> listIterator = list.listIterator(list.size());
       while (listIterator.hasPrevious()) {
-        if (Objects.equal(element, listIterator.previous())) {
+        if (Obj.equal(element, listIterator.previous())) {
           return listIterator.nextIndex();
         }
       }

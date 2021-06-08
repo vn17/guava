@@ -27,7 +27,7 @@ import static java.lang.Double.isNaN;
 import com.google.common.annotations.Beta;
 import com.google.common.annotations.GwtIncompatible;
 import com.google.common.base.MoreObjects;
-import com.google.common.base.Objects;
+import com.google.common.base.Obj;
 import java.io.Serializable;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -440,7 +440,7 @@ public final class Stats implements Serializable {
    */
   @Override
   public int hashCode() {
-    return Objects.hashCode(count, mean, sumOfSquaresOfDeltas, min, max);
+    return Obj.hashCode(count, mean, sumOfSquaresOfDeltas, min, max);
   }
 
   @Override

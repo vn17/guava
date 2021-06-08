@@ -47,7 +47,7 @@
  * <ul>
  *   <li>{@link com.google.common.base.Defaults}
  *   <li>{@link com.google.common.base.Enums}
- *   <li>{@link com.google.common.base.Objects}
+ *   <li>{@link com.google.common.base.Obj}
  *   <li>{@link com.google.common.base.Optional}
  *   <li>{@link com.google.common.base.Preconditions}
  *   <li>{@link com.google.common.base.Stopwatch}

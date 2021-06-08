@@ -18,7 +18,7 @@ package com.google.common.collect;
 
 import com.google.common.annotations.Beta;
 import com.google.common.annotations.GwtCompatible;
-import com.google.common.base.Objects;
+import com.google.common.base.Obj;
 import java.util.Map;
 import java.util.Map.Entry;
 import org.checkerframework.checker.nullness.qual.Nullable;
@@ -34,7 +34,7 @@ import org.checkerframework.checker.nullness.qual.Nullable;
  * should override {@code equals} as well, either providing your own implementation, or delegating
  * to the provided {@code standardEquals} method.
  *
- * <p>Each of the {@code standard} methods, where appropriate, use {@link Objects#equal} to test
+ * <p>Each of the {@code standard} methods, where appropriate, use {@link Obj#equal} to test
  * equality for both keys and values. This may not be the desired behavior for map implementations
  * that use non-standard notions of key equality, such as the entry of a {@code SortedMap} whose
  * comparator is not consistent with {@code equals}.
@@ -91,8 +91,8 @@ public abstract class ForwardingMapEntry<K, V> extends ForwardingObject implemen
   protected boolean standardEquals(@Nullable Object object) {
     if (object instanceof Entry) {
       Entry<?, ?> that = (Entry<?, ?>) object;
-      return Objects.equal(this.getKey(), that.getKey())
-          && Objects.equal(this.getValue(), that.getValue());
+      return Obj.equal(this.getKey(), that.getKey())
+          && Obj.equal(this.getValue(), that.getValue());
     }
     return false;
   }

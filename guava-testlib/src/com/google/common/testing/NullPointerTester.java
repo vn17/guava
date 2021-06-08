@@ -22,7 +22,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import com.google.common.annotations.Beta;
 import com.google.common.annotations.GwtIncompatible;
 import com.google.common.base.Converter;
-import com.google.common.base.Objects;
+import com.google.common.base.Obj;
 import com.google.common.collect.ClassToInstanceMap;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
@@ -318,7 +318,7 @@ public final class NullPointerTester {
 
     @Override
     public int hashCode() {
-      return Objects.hashCode(name, parameterTypes);
+      return Obj.hashCode(name, parameterTypes);
     }
   }
 

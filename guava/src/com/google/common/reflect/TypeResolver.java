@@ -21,7 +21,7 @@ import static java.util.Arrays.asList;
 
 import com.google.common.annotations.Beta;
 import com.google.common.base.Joiner;
-import com.google.common.base.Objects;
+import com.google.common.base.Obj;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
 import java.lang.reflect.GenericArrayType;
@@ -559,7 +559,7 @@ public final class TypeResolver {
 
     @Override
     public int hashCode() {
-      return Objects.hashCode(var.getGenericDeclaration(), var.getName());
+      return Obj.hashCode(var.getGenericDeclaration(), var.getName());
     }
 
     @Override

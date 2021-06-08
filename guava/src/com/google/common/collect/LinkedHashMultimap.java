@@ -23,7 +23,7 @@ import static com.google.common.collect.CollectPreconditions.checkRemove;
 import com.google.common.annotations.GwtCompatible;
 import com.google.common.annotations.GwtIncompatible;
 import com.google.common.annotations.VisibleForTesting;
-import com.google.common.base.Objects;
+import com.google.common.base.Obj;
 import com.google.errorprone.annotations.CanIgnoreReturnValue;
 import com.google.j2objc.annotations.WeakOuter;
 import java.io.IOException;
@@ -176,7 +176,7 @@ public final class LinkedHashMultimap<K, V>
     }
 
     boolean matchesValue(@Nullable Object v, int smearedVHash) {
-      return smearedValueHash == smearedVHash && Objects.equal(getValue(), v);
+      return smearedValueHash == smearedVHash && Obj.equal(getValue(), v);
     }
 
     @Override

@@ -20,7 +20,7 @@ import static com.google.common.truth.Truth.assertThat;
 
 import com.google.common.annotations.GwtCompatible;
 import com.google.common.annotations.GwtIncompatible;
-import com.google.common.base.Objects;
+import com.google.common.base.Obj;
 import com.google.common.testing.EqualsTester;
 import com.google.common.testing.NullPointerTester;
 import junit.framework.TestCase;
@@ -138,9 +138,9 @@ public abstract class AbstractTableReadTest extends TestCase {
   public void testHashCode() {
     table = create("foo", 1, 'a', "bar", 1, 'b', "foo", 3, 'c');
     int expected =
-        Objects.hashCode("foo", 1, 'a')
-            + Objects.hashCode("bar", 1, 'b')
-            + Objects.hashCode("foo", 3, 'c');
+        Obj.hashCode("foo", 1, 'a')
+            + Obj.hashCode("bar", 1, 'b')
+            + Obj.hashCode("foo", 3, 'c');
     assertEquals(expected, table.hashCode());
   }
 
